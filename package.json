@@ -1,0 +1,36 @@
+{
+    "name": "Specter",
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "A Solo Wiki Platform",
+    "homepage": "https://github.com/benvacha/specter",
+    "author": {
+        "name": "Ben Vacha",
+        "email": "ben@benvacha.com",
+        "url": "http://benvacha.com"
+    },
+    "keywords": [
+        "specter", "solo", "wiki"
+    ],
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/benvacha/specter.git"
+    },
+    "bugs": {
+        "url": "https://github.com/benvacha/specter/issues"
+    },
+    "engines": {
+        "node": "0.10.x",
+        "npm": "2.1.x"
+    },
+    "dependencies": {
+        "body-parser": "^1.12.2",
+        "express": "^4.12.3",
+        "mongoose": "^4.0.1"
+    }
+}

@@ -1,0 +1,9 @@
+<h2>Sign In</h2>
+<h4 ng-if="error" ng-bind="error"></h4>
+<form ng-submit="signin()">
+    <label>UserName</label><br />
+    <input type="text" ng-model="username" /><br />
+    <label>PassWord</label><br />
+    <input type="password" ng-model="password" /><br />
+    <input type="submit" value="Sign In" ng-click="signin()" />
+</form>

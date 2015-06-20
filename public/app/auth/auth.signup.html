@@ -1,0 +1,11 @@
+<h2>Sign Up</h2>
+<h4 ng-if="error" ng-bind="error"></h4>
+<form ng-submit="signup()">
+    <label>UserName</label><br />
+    <input type="text" ng-model="username" /><br />
+    <label>PassWord</label><br />
+    <input type="password" ng-model="password1" /><br />
+    <label>PassWord</label><br />
+    <input type="password" ng-model="password2" /><br />
+    <input type="submit" value="Sign Up" ng-click="signup()" />
+</form>

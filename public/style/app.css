@@ -1,7 +1,229 @@
 /* Specter : A Solo Wiki Platform */
 
-html, body {
-    background-color:#09C;
-    font-family:Helvetica;
-    color:#FFF;
+/* window + global */
+html,
+body {
+    position:relative;
+    margin:0px;
+    width:100%;
+    height:100% !important;
+    height:auto;
+    min-height:100%;
+    padding:0px;
+    color:#333;
+    font-size:.95em;
+    font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, 
+                 Arial, "Lucida Grande", sans-serif;
+    -webkit-overflow-scrolling:touch;
+    -ms-text-size-adjust:100%;
+    -webkit-text-size-adjust:100%;
+}
+* {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    -webkit-background-clip:padding-box;
+    -moz-background-clip:padding;
+    background-clip:padding-box;
+}
+
+/* common */
+a {
+    color:inherit;
+    text-decoration:none;
+}
+a:hover {
+    cursor:pointer;
+    color:inherit;
+    text-decoration:underline;
+}
+form {
+    position:relative;
+    margin:0px;
+    width:100%;
+    height:auto;
+    padding:0px;
+}
+form label {
+    position:relative;
+    margin:0px 0px 0px 5px;
+    width:100%;
+    height:auto;
+    padding:0px;
+    color:#666;
+    font-size:1.2em;
+}
+form label span {
+    position:relative;
+    margin:0px;
+    width:auto;
+    height:auto;
+    padding:0px;
+    color:#CCC;
+    font-size:.75em;
+}
+form label span.error {
+    color:#D9BABD;
+}
+form input[type="text"],
+form input[type="password"] {
+    position:relative;
+    margin:5px 0px 15px 0px;
+    width:100%;
+    height:auto;
+    padding:5px 8px;
+    border:2px solid #CCC;
+    font-size:1em;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+    -webkit-border-radius:5px;
+       -moz-border-radius:5px;
+            border-radius:5px;
+}
+form input[type="text"].error,
+form input[type="password"].error {
+    border:2px solid #D9BABD;
+}
+form input[type="text"]:focus,
+form input[type="password"]:focus {
+    outline:none;
+    border:2px solid #B6C4D9;
+}
+form input[type="submit"],
+form button {
+    position:relative;
+    margin:0px 0px 15px 0px;
+    width:100%;
+    height:auto;
+    padding:5px 8px;
+    border:none;
+    color:#999;
+    font-size:1.2em;
+    background-color:#E4E4E4;
+    border:2px solid #CCC;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+    -webkit-border-radius:5px;
+       -moz-border-radius:5px;
+            border-radius:5px;
+}
+form input[type="submit"]:hover,
+form input[type="submit"]:focus,
+form button:hover,
+form button:focus {
+    cursor:pointer;
+    color:#6B7380;
+    outline:none;
+    background-color:#D3E3FB;
+    border:2px solid #B6C4D9;
+}
+
+/* lists */
+ul.horizontal {
+    position:relative;
+    margin:0px;
+    width:auto;
+    height:auto;
+    padding:0px;
+    list-style-type:none;
+}
+ul.horizontal li {
+    position:relative;
+    display:inline-block;
+    margin:0px 0px 0px 15px;
+    width:auto;
+    height:auto;
+    padding:0px;
+}
+ul.horizontal li.right {
+    float:right;
+    margin:0px 15px 0px 0px;
+}
+
+/* auth */
+.body.auth {
+    position:absolute;
+    top:0px; left:0px;
+    width:100%;
+    height:100%;
+    padding:0px;
+    overflow:auto;
+    background-color:#333;
+}
+.body.auth .content {
+    position:relative;
+    margin:0px auto;
+    width:550px;
+    height:auto;
+    padding:25px;
+}
+.body.auth .content .modal {
+    position:relative;
+    margin:100px 0px 0px 0px;
+    width:100%;
+    height:auto;
+    padding:25px 25px;
+    background-color:#FFF;
+    -webkit-border-radius:10px;
+       -moz-border-radius:10px;
+            border-radius:10px;
+    -webkit-box-shadow: 5px 8px 15px 10px rgba(0,0,0,0.5);
+       -moz-box-shadow: 5px 8px 15px 10px rgba(0,0,0,0.5);
+            box-shadow: 5px 8px 15px 10px rgba(0,0,0,0.5);
+}
+.body.auth .content .modal .header {
+    position:relative;
+    margin:-15px 10px 0px 0px;
+    width:100%;
+    height:auto;
+    padding:0px;
+    color:#999;
+    font-size:4em;
+    font-weight:bold;
+    text-align:right;
+}
+.body.auth .content .modal .boder {
+    position:relative;
+    margin:0px;
+    width:100%;
+    height:auto;
+    padding:0px;
+}
+.body.auth .content .modal .footer {
+    position:relative;
+    margin:10px 0px -15px 0px;
+    width:100%;
+    height:auto;
+    padding:0px;
+    color:#999;
+    font-size:.9em;
+}
+
+/* wiki */
+.body.wiki {
+    
+}
+
+/* responsive */
+@media screen and (max-width:960px) {
+    
+    
+    
+}
+@media screen and (max-width:550px) {
+    
+    .body.auth .content {
+        width:100%;
+        min-width:320px;
+    }
+    .body.auth .content .modal {
+        margin:25px 0px 0px 0px;
+    }
+    .body.auth .content .modal .header {
+        margin:-15px 0px 10px 0px;
+        text-align:center;
+    }
+    
 }

@@ -1,24 +1,19 @@
 <div class="modal animated bounceInDown">
     <div class="header">
-        sign in
+        recover
     </div>
     <div class="boder">
-        <form ng-submit="signin()">
+        <form ng-submit="recover()">
             <label>
                 username
                 <span class="error" ng-if="error.username">{{error.username}}</span>
             </label>
             <input type="text" ng-model="username" ng-class="{'error':error.username}" />
-            <label>
-                password
-                <span class="error" ng-if="error.password">{{error.password}}</span>
-            </label>
-            <input type="password" ng-model="password" ng-class="{'error':error.password}" />
-            <input type="submit" value="sign in" ng-click="signin()" />
+            <input type="submit" value="recover" ng-click="recover()" />
         </form>
     </div>
     <ul class="footer horizontal">
         <li><a ui-sref="auth.signup">sign up</a></li>
-        <li class="right"><a ui-sref="auth.recover">recover</a></li>
+        <li class="right"><a ui-sref="auth.signin">sign in</a></li>
     </ul>
 </div>

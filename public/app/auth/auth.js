@@ -30,12 +30,20 @@ angular.module('app.auth', [
         .state('auth.signin', {
             templateUrl: 'specter/app/auth/auth.signin.html',
             controller: ['$window','$rootScope','$scope','$state', function($window,$rootScope,$scope,$state) {
+                $scope.error = {};
                 $scope.signin = function() {
-                    if(!$scope.username || !$scope.password) {
-                        $scope.error = 'Missing Sign In Credentials';
-                    } else if($scope.username !== 'dev' || $scope.password !== 'dev') {
-                        $scope.error = 'Invalid Sign In Credentials';
-                    } else {
+                    $scope.error = {};
+                    if(!$scope.username) {
+                        $scope.error.username = 'required';
+                    } else if($scope.username !== 'dev') {
+                        $scope.error.username = 'invalid';
+                    }
+                    if(!$scope.password) {
+                        $scope.error.password = 'required';
+                    } else if($scope.password !== 'dev') {
+                        $scope.error.password = 'invalid';
+                    }
+                    if(!$scope.error.username && !$scope.error.password) {
                         $rootScope.user = { username: $scope.username };
                         $window.localStorage['com.specter.user'] = JSON.stringify($rootScope.user);
                         $state.go('wiki');
@@ -46,12 +54,20 @@ angular.module('app.auth', [
         .state('auth.signup', {
             templateUrl: 'specter/app/auth/auth.signup.html',
             controller: ['$window','$rootScope','$scope','$state', function($window,$rootScope,$scope,$state) {
+                $scope.error = {};
                 $scope.signup = function() {
-                    if(!$scope.username || !$scope.password1 || !$scope.password2) {
-                        $scope.error = 'Missing Sign Up Credential';
+                    $scope.error = {};
+                    if(!$scope.username) {
+                        $scope.error.username = 'required';
+                    }
+                    if(!$scope.password1) {
+                        $scope.error.password1 = 'required';
+                    } else if(!$scope.password2) {
+                        $scope.error.password2 = 'required';
                     } else if($scope.password1 !== $scope.password2) {
-                        $scope.error = 'Passwords Must Match';
-                    } else {
+                        $scope.error.password2 = 'passwords must match';
+                    }
+                    if(!$scope.error.username && !$scope.error.password1 && !$scope.error.password2) {
                         $rootScope.user = { username: $scope.username };
                         $window.localStorage['com.specter.user'] = JSON.stringify($rootScope.user);
                         $state.go('wiki');
@@ -64,6 +80,22 @@ angular.module('app.auth', [
             controller: ['$window','$rootScope','$state', function($window,$rootScope,$state) {
                 $rootScope.user = null;
                 $window.localStorage.removeItem('com.specter.user');
+            }]
+        })
+        .state('auth.recover', {
+            templateUrl: 'specter/app/auth/auth.recover.html',
+            controller: ['$window','$rootScope','$scope','$state', function($window,$rootScope,$scope,$state) {
+                $scope.error = {};
+                $scope.recover = function() {
+                    $scope.error = {};
+                    if(!$scope.username) {
+                        $scope.error.username = 'required';
+                    }
+                    if(!$scope.error.username) {
+                        // TODO: implement recovery
+                        $scope.error.username = 'recovery is disabled';
+                    }
+                };
             }]
         });
 }]);

@@ -46,7 +46,7 @@ angular.module('app.auth', [
                     if(!$scope.error.username && !$scope.error.password) {
                         $rootScope.user = { username: $scope.username };
                         $window.localStorage['com.specter.user'] = JSON.stringify($rootScope.user);
-                        $state.go('wiki');
+                        $state.go('wiki.page');
                     }
                 };
             }]
@@ -70,7 +70,7 @@ angular.module('app.auth', [
                     if(!$scope.error.username && !$scope.error.password1 && !$scope.error.password2) {
                         $rootScope.user = { username: $scope.username };
                         $window.localStorage['com.specter.user'] = JSON.stringify($rootScope.user);
-                        $state.go('wiki');
+                        $state.go('wiki.page');
                     }
                 };
             }]

@@ -24,17 +24,27 @@ angular.module('app.wiki', [
             params: { path: '' },
             views: {
                 'control': {
-                    template: '<a ng-click="edit()">edit</a>',
-                    controller: ['$scope', '$state', '$stateParams', function($scope, $state, $stateParams) {
+                    templateUrl: 'specter/app/wiki/wiki.control.show.html',
+                    controller: ['$location', '$scope', '$state', '$stateParams', function($location, $scope, $state, $stateParams) {
+                        $scope.path = $stateParams.path ? $stateParams.path : '/';
+                        $scope.go = function() {
+                            $location.path($scope.path);
+                        };
                         $scope.edit = function() {
-                            $state.go('.edit', $stateParams);
-                        }
+                            $state.go('wiki.page.edit', $stateParams);
+                        };
                     }]
                 },
                 'content': {
-                    template: '<h1>Wiki</h1><h3>{{path}}</h3>',
+                    templateUrl: 'specter/app/wiki/wiki.content.show.html',
                     controller: ['$scope', '$state', '$stateParams', function($scope, $state, $stateParams) {
-                        $scope.path = $stateParams.path;
+                        var path = $stateParams.path ? $stateParams.path : '/';
+                            date = new Date(),
+                            day = date.getDate(),
+                            month = date.getMonth() + 1,
+                            year = date.getFullYear();
+                        $scope.path = path;
+                        $scope.date = day + '/' + month + '/' + year;
                     }]
                 }
             }
@@ -43,16 +53,15 @@ angular.module('app.wiki', [
             params: { path: '' },
             views: {
                 'control@wiki': {
-                    template: '<a ng-click="save()">save</a>',
+                    templateUrl: 'specter/app/wiki/wiki.control.edit.html',
                     controller: ['$scope', '$state', '$stateParams', function($scope, $state, $stateParams) {
                         $scope.save = function() {
-                            console.log($stateParams);
-                            $state.go('^', $stateParams);
-                        }
+                            $state.go('wiki.page', $stateParams);
+                        };
                     }]
                 },
                 'content@wiki': {
-                    template: '<h1>Wiki Edit</h1><h3>{{path}}</h3>',
+                    templateUrl: 'specter/app/wiki/wiki.content.edit.html',
                     controller: ['$scope', '$state', '$stateParams', function($scope, $state, $stateParams) {
                         $scope.path = $stateParams.path;
                     }]

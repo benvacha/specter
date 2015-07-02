@@ -1,0 +1,21 @@
+<ul class="controller">
+    <li class="icon entypo-menu left">
+        <ul>
+            <li><a href="/">/</a></li>
+            <li><a href="/a">/a</a></li>
+            <li><a href="/a/b">/a/b</a></li>
+            <li><a href="/a/b/c">/a/b/c</a></li>
+            <li class="divider"></li>
+            <li><a ui-sref="auth.signout">sign out</a></li>
+        </ul>
+    </li>
+    <li class="icon entypo-address">
+        <ul class="address"><li>
+            <form ng-submit="go()">
+                <input type="text" ng-model="path" />
+                <input type="submit" value="go" />
+            </form>
+        </li></ul>
+    </li>
+    <li class="icon entypo-pencil right" ng-click="edit()"></li>
+</ul>

@@ -1,14 +1,4 @@
 <div class="body wiki">
-    <div class="topbar">
-        <div class="menu"></div>
-        <div class="location"></div>
-        <div class="control" ui-view="control"></div>
-    </div>
-    <div class="content" ui-view="content"></div>
-    <br /><br /><br />
-    <a href="/a">/a</a> - 
-    <a href="/a/b">/a/b</a> - 
-    <a href="/a/b/c">/a/b/c</a>
-    <br />
-    <a ui-sref="auth.signout">sign out</a>
+    <div ui-view="control"></div>
+    <div ui-view="content"></div>
 </div>

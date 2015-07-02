@@ -358,17 +358,49 @@ ul.horizontal li.right {
     letter-spacing:1px;
 }
 .body.wiki .editor {
-    position:relative;
-    margin:0px;
+    position:absolute;
+    top:0px; left:0px;
     width:100%;
     height:100%;
     padding:35px 0px 0px 0px;
+}
+.body.wiki .editor .markdown,
+.body.wiki .editor .preview {
+    position:relative;
+    display:block;
+    float:left;
+    margin:0px;
+    width:50%;
+    height:100%;
+    padding:35px 15px;
+    border:0px;
+    outline:1px solid #999;
+    overflow:auto;
+}
+.body.wiki .editor .markdown {
+    font-size:1em;
+    font-family:monospace;
+}
+.body.wiki .editor .markdown.hidden,
+.body.wiki .editor .preview.hidden {
+    display:none;
+}
+.body.wiki .editor .markdown.solo,
+.body.wiki .editor .preview.solo {
+    float:none;
+    margin:0px auto;
+    width:960px;
+    outline:0px;
 }
 
 /* responsive */
 @media screen and (max-width:960px) {
     
     .body.wiki .viewer {
+        width:100%;
+    }
+    .body.wiki .editor .markdown.solo,
+    .body.wiki .editor .preview.solo {
         width:100%;
     }
     

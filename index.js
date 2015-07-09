@@ -9,7 +9,6 @@ var config = {
 var express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
-    apis = require(__dirname+'/controller/apis'),
     app = express(),
     server;
 // use body-parser
@@ -17,7 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // serve api requests
-app.use('/specter/api', apis);
+app.use('/specter/api', require(__dirname+'/controller/apis'));
 // serve resource requests
 app.use('/specter', express.static(__dirname+'/public'));
 // serve wiki page requests

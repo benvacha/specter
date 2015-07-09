@@ -23,7 +23,7 @@ angular.module('app.wiki', [
             url: '/{path:nonURIEncoded}',
             params: { path: '' },
             templateUrl: 'specter/app/wiki/wiki.show.html',
-            controller: ['$location', '$scope', '$state', '$stateParams', function($location, $scope, $state, $stateParams) {
+            controller: ['$http', '$location', '$scope', '$state', '$stateParams', function($http, $location, $scope, $state, $stateParams) {
                 var path = $stateParams.path ? $stateParams.path : '/';
                     date = new Date(),
                     day = date.getDate(),
@@ -37,13 +37,20 @@ angular.module('app.wiki', [
                 $scope.edit = function() {
                     $state.go('wiki.edit', $stateParams);
                 };
+                $http.get('/specter/api/pages/' + encodeURIComponent(path))
+                    .success(function(data, status, headers, config) {
+                        $scope.markdown = data.markdown;
+                    }).error(function(data, status, headers, config) {
+                        $scope.markdown = 'page not found';
+                    });
             }]
         })
         .state('wiki.edit', {
             params: { path: '' },
             templateUrl: 'specter/app/wiki/wiki.edit.html',
-            controller: ['$window', '$scope', '$state', '$stateParams', function($window, $scope, $state, $stateParams) {
-                $scope.path = $stateParams.path;
+            controller: ['$http', '$window', '$scope', '$state', '$stateParams', function($http, $window, $scope, $state, $stateParams) {
+                var path = $stateParams.path ? $stateParams.path : '/';
+                $scope.path = path;
                 if($window.innerWidth <= 550) {
                     $scope.showMarkdown = true;
                     $scope.showPreview = false;
@@ -71,8 +78,28 @@ angular.module('app.wiki', [
                     $state.go('wiki.show', $stateParams);
                 };
                 $scope.save = function() {
-                    $state.go('wiki.show', $stateParams);
+                    $http.post('/specter/api/pages', {
+                        path: path,
+                        markdown: $scope.markdown
+                    }).success(function(data, status, headers, config) {
+                        $state.go('wiki.show', $stateParams);
+                    }).error(function(data, status, headers, config) {
+                        $http.put('/specter/api/pages/' + encodeURIComponent(path), {
+                            markdown: $scope.markdown
+                        }).success(function(data, status, headers, config) {
+                            $state.go('wiki.show', $stateParams);
+                        }).error(function(data, status, headers, config) {
+                            // TODO handle errors
+                            console.log(data);
+                        });
+                    });
                 };
+                $http.get('/specter/api/pages/' + encodeURIComponent(path))
+                    .success(function(data, status, headers, config) {
+                        $scope.markdown = data.markdown;
+                    }).error(function(data, status, headers, config) {
+                        $scope.markdown = 'page not found';
+                    });
             }]
         });
 }]);

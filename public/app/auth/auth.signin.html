@@ -5,16 +5,16 @@
     <div class="boder">
         <form ng-submit="signin()">
             <label>
-                username
-                <span class="error" ng-if="error.username">{{error.username}}</span>
+                email address
+                <span class="error" ng-if="error.email">{{error.email}}</span>
             </label>
-            <input type="text" ng-model="username" ng-class="{'error':error.username}" />
+            <input type="text" ng-model="email" ng-class="{'error':error.email}" />
             <label>
                 password
                 <span class="error" ng-if="error.password">{{error.password}}</span>
             </label>
             <input type="password" ng-model="password" ng-class="{'error':error.password}" />
-            <input type="submit" value="sign in" ng-click="signin()" />
+            <input type="submit" value="sign in" />
         </form>
     </div>
     <ul class="footer horizontal">

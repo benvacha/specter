@@ -7,7 +7,5 @@
 
 <div class="editor">
     <textarea class="markdown" ng-model="markdown" ng-class="{hidden:!showMarkdown, solo:showMarkdown && !showPreview}"></textarea>
-    <div class="preview" ng-class="{hidden:!showPreview, solo:showPreview && !showMarkdown}">
-        {{markdown}}
-    </div>
+    <div class="preview" marked="markdown" ng-class="{hidden:!showPreview, solo:showPreview && !showMarkdown}"></div>
 </div>

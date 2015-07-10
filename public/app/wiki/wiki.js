@@ -2,7 +2,9 @@
 
 //
 angular.module('app.wiki', [
-    'ui.router'
+    'ui.router',
+    'ngSanitize',
+    'hc.marked'
 ])
 
 //
@@ -23,14 +25,14 @@ angular.module('app.wiki', [
             url: '/{path:nonURIEncoded}',
             params: { path: '' },
             templateUrl: 'specter/app/wiki/wiki.show.html',
-            controller: ['$http', '$location', '$scope', '$state', '$stateParams', function($http, $location, $scope, $state, $stateParams) {
+            controller: ['$http', '$location', '$scope', '$state', '$stateParams', 'marked', function($http, $location, $scope, $state, $stateParams, marked) {
                 var path = $stateParams.path ? $stateParams.path : '/';
                     date = new Date(),
                     day = date.getDate(),
                     month = date.getMonth() + 1,
                     year = date.getFullYear();
                 $scope.path = path;
-                $scope.date = day + '/' + month + '/' + year;
+                $scope.date = '00/00/0000';
                 $scope.go = function() {
                     $location.path($scope.path);
                 };
@@ -39,16 +41,21 @@ angular.module('app.wiki', [
                 };
                 $http.get('/specter/api/pages/' + encodeURIComponent(path))
                     .success(function(data, status, headers, config) {
-                        $scope.markdown = data.markdown;
+                        $scope.markup = marked(data.markdown);
+                        var date = new Date(data.updated),
+                            day = date.getDate(),
+                            month = date.getMonth() + 1,
+                            year = date.getFullYear();
+                        $scope.date = day + '/' + month + '/' + year;
                     }).error(function(data, status, headers, config) {
-                        $scope.markdown = 'page not found';
+                        $scope.markup = '';
                     });
             }]
         })
         .state('wiki.edit', {
             params: { path: '' },
             templateUrl: 'specter/app/wiki/wiki.edit.html',
-            controller: ['$http', '$window', '$scope', '$state', '$stateParams', function($http, $window, $scope, $state, $stateParams) {
+            controller: ['$http', '$window', '$scope', '$state', '$stateParams', 'marked', function($http, $window, $scope, $state, $stateParams, marked) {
                 var path = $stateParams.path ? $stateParams.path : '/';
                 $scope.path = path;
                 if($window.innerWidth <= 550) {
@@ -94,11 +101,14 @@ angular.module('app.wiki', [
                         });
                     });
                 };
+                $scope.markedMarkdown = function() {
+                    return marked($scope.markdown) + '';
+                };
                 $http.get('/specter/api/pages/' + encodeURIComponent(path))
                     .success(function(data, status, headers, config) {
                         $scope.markdown = data.markdown;
                     }).error(function(data, status, headers, config) {
-                        $scope.markdown = 'page not found';
+                        $scope.markdown = '';
                     });
             }]
         });

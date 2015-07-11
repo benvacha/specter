@@ -13,8 +13,9 @@ Need a note taking platform? Simple Note too simple? Evernote too difficult to o
 * Upgrade In Minutes
 * Mobile First
 * Markdown Support
+* Bookmark Support
 * Realtime Editor
-* Bookmarkable
+* Customizable Menu
 * Unlimited Pages
 
 ---
@@ -25,7 +26,6 @@ Need a note taking platform? Simple Note too simple? Evernote too difficult to o
 
 ### Deploy Locally
 * [Install NodeJS](https://github.com/joyent/node/wiki/Installation)
-* [Install MongoDB](http://docs.mongodb.org/manual/installation)
 * Clone *Specter* source code locally
   * `git clone https://github.com/benvacha/specter.git`
 * Enter *Specter* directory

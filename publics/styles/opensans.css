@@ -1,0 +1,7 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: normal;
+    src: url('/specter/fonts/open-sans.ttf') format('truetype');
+}

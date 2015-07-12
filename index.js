@@ -1,11 +1,15 @@
-/* Specter : A Solo Wiki Platform */
+/* Specter : https://github.com/benvacha/specter */
+
+//
+// globals
+global.__root = __dirname;
 
 //
 // declarations
 var express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
-    config = require('./config'),
+    serverConfig = require(__root+'/configs/server'),
     app = express(),
     server;
 
@@ -16,28 +20,30 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 //
 // routes
-app.use(function(req, res) {
-    res.send('Hello Specter!');
+app.use('/specter/apis', require(__root+'/controllers/api'));
+app.use('/specter', express.static(__root+'/publics'));
+app.use('/', function(req, res, next) {
+    res.sendFile(__root+'/publics/index.html');
 });
 
 //
 // start
 mongoose.connection.on('connected', function() {
-    console.log('Connected to', config.databaseString);
+    console.log('Connected to', serverConfig.database);
 }).on('error', function(err) {
-    console.log('Error connecting to', config.databaseString, '\n', err);
+    console.log('Error connecting to', serverConfig.database, '\n', err);
 }).on('disconnected', function() {
-    console.log('\nDisconnected from', config.databaseString);
+    console.log('\nDisconnected from', serverConfig.database);
 }).on('open', function() {
-    console.log('Opened', config.databaseString);
-    server = app.listen(config.serverPort, function() {
+    console.log('Opened', serverConfig.database);
+    server = app.listen(serverConfig.port, function() {
         console.log('Listening at http://%s:%s',
             server.address().address,
             server.address().port
         );
     });
 });
-mongoose.connect(config.databaseString);
+mongoose.connect(serverConfig.database);
 
 //
 // end

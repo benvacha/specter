@@ -16,10 +16,10 @@ module.exports = router;
 //
 // public
 router.post('/tokens', function(req, res) {
-    if(!req.body.email) return res.status(400).json({param:'email', desc:'email is required'});
-    if(!req.body.password) return res.status(400).json({param:'password', desc:'password is required'});
-    if(req.body.email !== userConfig.email) return res.status(400).json({param:'email', desc:'invalid email'});
-    if(req.body.password !== userConfig.password) return res.status(400).json({param:'password', desc:'invalid password'});
+    if(!req.body.username) return res.status(400).json({desc:'username required'});
+    if(!req.body.password) return res.status(400).json({desc:'password required'});
+    if(req.body.username !== userConfig.username) return res.status(400).json({desc:'invalid credentials'});
+    if(req.body.password !== userConfig.password) return res.status(400).json({desc:'invalid credentials'});
     return res.status(200).json({token: jsonwebtoken.sign({}, serverConfig.secret)});
 });
 

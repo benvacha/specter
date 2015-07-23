@@ -3,6 +3,6 @@
 //
 // user configurations
 module.exports = {
-    email: 'user@domain.com',
+    username: 'username',
     password: 'password'
 };

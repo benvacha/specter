@@ -4,8 +4,7 @@
 // declarations
 var express = require('express'),
     jsonwebtoken = require('jsonwebtoken'),
-    userConfig = require(__root+'/configs/user'),
-    serverConfig = require(__root+'/configs/server'),
+    config = require(__root+'/configs/user'),
     Page = require(__root+'/models/page'),
     router = express.Router();
 
@@ -18,9 +17,9 @@ module.exports = router;
 router.post('/tokens', function(req, res) {
     if(!req.body.username) return res.status(400).json({desc:'username required'});
     if(!req.body.password) return res.status(400).json({desc:'password required'});
-    if(req.body.username !== userConfig.username) return res.status(400).json({desc:'invalid credentials'});
-    if(req.body.password !== userConfig.password) return res.status(400).json({desc:'invalid credentials'});
-    return res.status(200).json({token: jsonwebtoken.sign({}, serverConfig.secret)});
+    if(req.body.username !== config.username) return res.status(400).json({desc:'invalid credentials'});
+    if(req.body.password !== config.password) return res.status(400).json({desc:'invalid credentials'});
+    return res.status(200).json({token: jsonwebtoken.sign({}, config.username+config.password)});
 });
 
 //
@@ -28,7 +27,7 @@ router.post('/tokens', function(req, res) {
 router.use('/', function(req, res, next) {
     var token = req.headers['x-access-token'] || req.query['access_token'];
     if(!token) return res.status(401).json({desc:'access token required'});
-    jsonwebtoken.verify(token, serverConfig.secret, function(err, decoded) {
+    jsonwebtoken.verify(token, config.username+config.password, function(err, decoded) {
         if(err) return res.status(401).json({desc:'invalid access token'});
         next();
     });

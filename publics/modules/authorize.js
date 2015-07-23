@@ -44,14 +44,6 @@ angular.module('app.authorize', [
                 }
             }]
         })
-        .state('authorize.fakein', {
-            template: '',
-            controller: ['$http','$window','$state', function($http,$window,$state) {
-                $window.localStorage['com.specter.token'] = 'json.web.token';
-                $http.defaults.headers.common['x-access-token'] = $window.localStorage['com.specter.token'];
-                $state.go('wiki.show');
-            }]
-        })
         .state('authorize.signout', {
             template: '',
             controller: ['$http','$window','$state', function($http,$window,$state) {

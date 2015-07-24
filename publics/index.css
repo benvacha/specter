@@ -39,27 +39,104 @@ body {
 }
 
 /*
+/* nav */
+.nav {
+    position:fixed;
+    bottom:0px; left:0px;
+    width:100%;
+    height:auto;
+    min-height:35px;
+    padding:0px 15px;
+    background-color:#222;
+}
+.nav .icon {
+    position:relative;
+    margin:0px;
+    width:auto;
+    height:auto;
+    padding:0px 15px;
+    color:#CCC;
+    cursor:pointer;
+    font-size:18px;
+    line-height:35px;
+    text-decoration:none;
+}
+.nav .icon:hover {
+    color:#FFF;
+}
+.nav .icon.left {
+    float:left;
+}
+.nav .icon.right {
+    float:right;
+}
+.nav .icon.selected {
+    text-decoration:underline;
+}
+.nav .icon.entypo-menu {
+    font-size:22px;
+}
+
+/*
+/* header */
+.header {
+    position:relative;
+    margin:0px;
+    width:100%;
+    height:auto;
+    padding:15px 25px;
+    color:#999;
+    text-align:right;
+    font-size:.9em;
+    letter-spacing:1px;
+    font-family:monospace;
+}
+
+/*
+/* content */
+.content {
+    position:relative;
+    margin:0px auto;
+    width:960px;
+    height:auto;
+    padding:0px 15px 55px 15px;
+}
+
+/*
 /* modal */
 .modal {
-    
+    position:fixed;
+    top:0px; left:0px;
+    width:100%;
+    height:100%;
+    padding:0px;
+}
+.modal .blackout {
+    position:fixed;
+    top:0px; left:0px;
+    width:100%;
+    height:100%;
+    padding:0px;
+    cursor:pointer;
+    background-color:rgba(0,0,0,.75);
 }
 /*
 /* modal auth */
-.modal.auth {
+.modal .auth {
     position:relative;
     margin:100px auto;
     width:300px;
     height:auto;
     padding:15px;
 }
-.modal.auth form {
+.modal .auth form {
     position:relative;
     margin:0px;
     width:100%;
     height:auto;
     padding:0px;
 }
-.modal.auth form label {
+.modal .auth form label {
     position:relative;
     display:block;
     margin:0px;
@@ -71,13 +148,13 @@ body {
     font-size:1.2em;
     letter-spacing:1px;
 }
-.modal.auth form label.error {
+.modal .auth form label.error {
     color:#D9BABD;
     text-align:right;
 }
-.modal.auth form input[type="text"],
-.modal.auth form input[type="password"],
-.modal.auth form input[type="submit"] {
+.modal .auth form input[type="text"],
+.modal .auth form input[type="password"],
+.modal .auth form input[type="submit"] {
     position:relative;
     margin:5px 0px 15px 0px;
     width:100%;
@@ -94,29 +171,122 @@ body {
        -moz-border-radius:5px;
             border-radius:5px;
 }
-.modal.auth form input[type="submit"] {
+.modal .auth form input[type="submit"] {
     text-align:right;
     background-color:#FFF;
 }
-.modal.auth form input[type="text"]:focus,
-.modal.auth form input[type="password"]:focus {
+.modal .auth form input[type="text"]:focus,
+.modal .auth form input[type="password"]:focus {
     outline:none;
     border:2px solid #B6C4D9;
 }
-.modal.auth form input[type="submit"]:hover,
-.modal.auth form input[type="submit"]:focus {
+.modal .auth form input[type="submit"]:hover,
+.modal .auth form input[type="submit"]:focus {
     cursor:pointer;
     color:#6B7380;
     outline:none;
     background-color:#D3E3FB;
     border:2px solid #B6C4D9;
 }
+/*
+/* menu */
+.modal .menu {
+    position:fixed;
+    top:0px; left:0px;
+    width:280px;
+    height:100%;
+    padding:0px;
+    background-color:#222;
+    overflow:auto;
+}
+.modal .menu a {
+    position:relative;
+    display:block;
+    margin:0px;
+    width:100%;
+    height:auto;
+    padding:15px 25px;
+    color:#CCC;
+    font-size:1em;
+    cursor:pointer;
+    text-decoration:none;
+    border-bottom:1px solid #444;
+}
+.modal .menu a:hover {
+    background-color:#333;
+}
+.modal .menu hr {
+    position:relative;
+    margin:0px;
+    width:100%;
+    height:auto;
+    padding:0px;
+    border:1px solid #777;
+}
+/*
+/* address */
+.modal .address {
+    position:fixed;
+    top:0px; left:0px;
+    width:100%;
+    height:auto;
+    padding:15px 25px;
+    background-color:#222;
+}
+.modal .address form {
+    position:relative;
+    margin:0px;
+    width:100%;
+    height:auto;
+    padding:0px;
+}
+.modal .address form input[type="text"] {
+    position:relative;
+    margin:0px;
+    width:100%;
+    height:auto;
+    padding:10px 15px;
+    color:#CCC;
+    font-size:1em;
+    letter-spacing:1px;
+    border:3px solid #444;
+    background-color:#222;
+}
+.modal .address form input[type="text"]:hover,
+.modal .address form input[type="text"]:focus {
+    outline:none;
+    background-color:#333;
+}
+.modal .address form input[type="submit"] {
+    position:absolute;
+    top:0px; right:0px;
+    width:100px;
+    height:auto;
+    padding:10px 15px;
+    color:#CCC;
+    font-size:1em;
+    border:3px solid #444;
+    background-color:#222;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+}
+.modal .address form input[type="submit"]:hover,
+.modal .address form input[type="submit"]:focus {
+    cursor:pointer;
+    outline:none;
+    background-color:#666;
+}
 
 /* 
 /* responsive */
 @media screen and (max-width:960px) {
     
-    
+    /*
+    /* content */
+    .content {
+        width:100%;
+    }
     
 }
 @media screen and (max-width:550px) {

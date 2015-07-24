@@ -1,10 +1,12 @@
-<div class="modal auth animated fadeIn">
-    <form ng-submit="signIn()">
-        <label>username</label>
-        <input type="text" ng-model="username" />
-        <label>password</label>
-        <input type="password" ng-model="password" />
-        <label class="error">{{error}}</label>
-        <input type="submit" value="sign in" />
-    </form>
+<div class="modal animated fadeIn">
+    <div class="auth">
+        <form ng-submit="signIn()">
+            <label>username</label>
+            <input type="text" ng-model="username" />
+            <label>password</label>
+            <input type="password" ng-model="password" />
+            <label class="error">{{error}}</label>
+            <input type="submit" value="sign in" />
+        </form>
+    </div>
 </div>

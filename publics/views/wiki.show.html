@@ -1,1 +1,31 @@
-<h2>Wiki Show</h2>
+<div class="header animated fadeIn">
+    <div>{{path}} :path&nbsp;&nbsp;&nbsp;</div>
+    <div>{{created}} :created</div>
+    <div>{{updated}} :updated</div>
+</div>
+<div class="content animated fadeIn" marked="markdown"></div>
+<div class="nav">
+    <div class="icon left entypo-menu" ng-click="toggleMenu()"></div>
+    <div class="icon left entypo-address" ng-click="toggleAddress()"></div>
+    <div class="icon right entypo-pencil" ng-click="edit()"></div>
+</div>
+<div class="modal animated fadeIn" ng-if="showMenu">
+    <div class="blackout" ng-click="toggleMenu()"></div>
+    <div class="menu animated slideInLeft">
+        <a href="/">/</a>
+        <a href="/a">/a</a>
+        <a href="/a/b">/a/b</a>
+        <a href="/a/b/c">/a/b/c</a>
+        <hr />
+        <a ui-sref="authorize.signout">sign out</a>
+    </div>
+</div>
+<div class="modal animated fadeIn" ng-if="showAddress">
+    <div class="blackout" ng-click="toggleAddress()"></div>
+    <div class="address animated slideInDown">
+        <form ng-submit="go(path)">
+            <input type="text" ng-model="path" autofocus />
+            <input type="submit" value="go" />
+        </form>
+    </div>
+</div>

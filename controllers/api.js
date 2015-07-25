@@ -42,7 +42,7 @@ router.get('/pages/:path', function(req, res) {
             path: (page && page.path) ? page.path : req.params.path,
             markdown: (page && page.markdown) ? page.markdown : '',
             created: (page && page.created) ? page.created : Date.now(),
-            updated: (page && page.updaged) ? page.updated : Date.now()
+            updated: (page && page.updated) ? page.updated : Date.now()
         });
     });
 });

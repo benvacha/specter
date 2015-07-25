@@ -91,6 +91,13 @@ body {
     letter-spacing:1px;
     font-family:monospace;
 }
+.header span {
+    position:relative;
+    margin:0px;
+    width:auto;
+    height:auto;
+    padding:0px 0px 0px 15px;
+}
 
 /*
 /* content */
@@ -100,6 +107,47 @@ body {
     width:960px;
     height:auto;
     padding:0px 15px 55px 15px;
+}
+
+/*
+/* editor */
+.editor {
+    position:absolute;
+    top:0px; left:0px;
+    width:100%;
+    height:100%;
+    padding:0px;
+}
+.editor .markdown,
+.editor .preview {
+    position:relative;
+    display:block;
+    float:left;
+    margin:0px;
+    width:50%;
+    height:100%;
+    padding:25px 15px 55px 15px;
+    border:none;
+    outline:1px solid #999;
+    background-color:transparent;
+    overflow:auto;
+    resize:none;
+}
+.editor .markdown {
+    font-size:1em;
+    font-family:monospace;
+    outline:none;
+}
+.editor .markdown.hidden,
+.editor .preview.hidden {
+    display:none;
+}
+.editor .markdown.solo,
+.editor .preview.solo {
+    float:none;
+    margin:0px auto;
+    width:960px;
+    outline:none;
 }
 
 /*
@@ -283,13 +331,32 @@ body {
 @media screen and (max-width:960px) {
     
     /*
+    /* header */
+    .header span:first-child {
+        display:block;
+    }
+    
+    /*
     /* content */
     .content {
         width:100%;
     }
     
+    /*
+    /* editor */
+    .editor .markdown.solo,
+    .editor .preview.solo {
+        width:100%;
+    }
+    
 }
 @media screen and (max-width:550px) {
+    
+    /*
+    /* header */
+    .header span {
+        display:block;
+    }
     
     /*
     /* modal auth */

@@ -1,1 +1,10 @@
-<h2>Wiki Edit</h2>
+<div class="editor animated fadeIn">
+    <textarea class="markdown" ng-model="markdown" ng-class="{hidden:!showMarkdown, solo:!showPreview}"></textarea>
+    <div class="preview" marked="markdown" ng-class="{hidden:!showPreview, solo:!showMarkdown}"></div>
+</div>
+<div class="nav">
+    <div class="icon left entypo-keyboard" ng-class="{selected:showMarkdown}" ng-click="toggleMarkdown()"></div>
+    <div class="icon left entypo-eye" ng-class="{selected:showPreview}" ng-click="togglePreview()"></div>
+    <div class="icon right entypo-block" ng-click="cancel()"></div>
+    <div class="icon right entypo-floppy" ng-click="save()"></div>
+</div>

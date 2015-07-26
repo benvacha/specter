@@ -38,6 +38,8 @@ angular.module('app.wiki', [
                         function($http,$location,$scope,$state,$stateParams) {
                 //
                 $scope.path = $stateParams.path;
+                $scope.markdown = $scope.menu = 'Loading...';
+                $scope.created = $scope.updated = 'Loading...';
                 $http.get('/specter/apis/pages/' + encodeURIComponent($scope.path))
                     .success(function(data, status, headers, config) {
                         $scope.markdown = data.markdown;
@@ -46,6 +48,13 @@ angular.module('app.wiki', [
                     })
                     .error(function(data, status, headers, config) {
                         $scope.markdown = 'Server Error';
+                    });
+                $http.get('/specter/apis/pages/%2Fspecter%2Fconfigs%2Fmenu')
+                    .success(function(data, status, headers, config) {
+                        $scope.menu = data.markdown;
+                    })
+                    .error(function(data, status, headers, config) {
+                        $scope.menu = 'Server Error';
                     });
                 //
                 $scope.toggleMenu = function() {

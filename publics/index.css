@@ -271,6 +271,27 @@ body {
     padding:0px;
     border:1px solid #777;
 }
+.modal .menu p {
+    position:relative;
+    margin:0px;
+    width:100%;
+    height:auto;
+    padding:0px;
+}
+.modal .menu ul {
+    position:relative;
+    margin:0px;
+    width:100%;
+    height:auto;
+    padding:0px;
+    list-style:none;
+}
+.modal .menu ul ul a {
+    padding-left:40px;
+}
+.modal .menu ul ul ul a {
+    padding-left:55px;
+}
 /*
 /* address */
 .modal .address {

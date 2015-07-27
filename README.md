@@ -30,6 +30,8 @@ Need a note taking platform? Simple Note too simple? Evernote too difficult to o
   * `git clone https://github.com/benvacha/specter.git`
 * Enter *Specter* directory
   * `cd specter`
+* Edit Username and Password
+  * `vim configs/user.js`
 * Install dependencies
   * `npm install`
 * Start the NodeJS application
@@ -44,6 +46,8 @@ Need a note taking platform? Simple Note too simple? Evernote too difficult to o
   * `git clone https://github.com/benvacha/specter.git`
 * Enter *Specter* directory
   * `cd specter`
+* Edit Username and Password
+  * `vim configs/user.js`
 * Create new Heroku application
   * `heroku create`
 * Add MongoDB database to Heroku application
